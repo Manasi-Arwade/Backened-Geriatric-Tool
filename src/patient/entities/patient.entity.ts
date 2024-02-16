@@ -6,20 +6,21 @@ export class Patient {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  firstName: string;
-
-  @Column()
-  lastName: string;
+  @Column({nullable:true})
+  PatientName: string;
 
   @Column({ nullable: true })
   age: number;
 
-  @Column({ nullable: true })
-  email: string;
+  @Column({nullable:true})
+  Gender: string;
 
-  @Column({ nullable: true })
-  phoneNumber: string;
+  @Column({nullable:true})
+  ConsultingDate: string;
+
+  @Column({nullable:true})
+  MRN : string;
+
 
   // Add more fields as needed
 }

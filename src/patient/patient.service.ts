@@ -13,25 +13,25 @@ export class PatientService {
     private readonly patientRepository: Repository<Patient>,
   ) {}
 
-  async findAll(): Promise<Patient[]> {
+  findAll() {
     return this.patientRepository.find();
   }
 
-  async findOne(id: number): Promise<Patient> {
-    return this.patientRepository.findOne(id);
+   findOne(id: number) {
+    return this.patientRepository.findOneBy({id});
   }
 
-  async create(createPatientDto: CreatePatientDto): Promise<Patient> {
+  create(createPatientDto: CreatePatientDto){
     const newPatient = this.patientRepository.create(createPatientDto);
     return this.patientRepository.save(newPatient);
   }
 
-  async update(id: number, updatePatientDto: CreatePatientDto): Promise<Patient> {
-    await this.patientRepository.update(id, updatePatientDto);
-    return this.patientRepository.findOne(id);
+   update(id: number, updatePatientDto: CreatePatientDto) {
+     this.patientRepository.update(id, updatePatientDto);
+    return this.patientRepository.findOneBy({id});
   }
 
-  async remove(id: number): Promise<void> {
-    await this.patientRepository.delete(id);
+  remove(id: number) {
+     this.patientRepository.delete(id);
   }
 }

@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Patient } from './patient/entities/patient.entity';
 import { PatientModule } from './patient/patient.module';
+import { ContactDetailsModule } from './contact-details/contact-details.module';
 
 @Module({
   imports: [
@@ -14,11 +15,12 @@ import { PatientModule } from './patient/patient.module';
       port: 3306,
       username: 'root',
       password: 'abcd@1234',
-      database: 'databasep',
+      database: 'databasem',
       entities: [Patient],
       synchronize: true,
     }),
     PatientModule,
+    ContactDetailsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
